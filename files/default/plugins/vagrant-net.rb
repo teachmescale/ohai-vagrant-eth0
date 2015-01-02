@@ -2,7 +2,7 @@
 
 # If the vagrant user exists we're running on Vagrant.  Not checking virtualization provider as Vagrant 1.1+ supports multiple.
 
-provide "ipaddress"
+provides "ipaddress", "network"
 require_plugin "#{os}::network"
 require_plugin "passwd"
 
@@ -14,6 +14,11 @@ if etc["passwd"].any? { |k,v| k == "vagrant"}
         ipaddress ip
       end
     end
+    Chef::Log.info("vagrant-ohai-plugin - replacing eth0")
+    network["interfaces"].delete("eth0")
+    eth1 = network["interfaces"].delete("eth1")
+    network["interfaces"]["eth0"] = eth1
+    network network
   else
     Chef::Log.debug("vagrant-ohai-plugin - eth1 not detected")
   end
