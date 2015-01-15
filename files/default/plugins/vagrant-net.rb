@@ -4,7 +4,7 @@
 
 provides "ipaddress", "network"
 require_plugin "#{os}::network"
-require_plugin "passwd"
+depends "passwd"
 
 if etc["passwd"].any? { |k,v| k == "vagrant"}
   if network["interfaces"]["eth1"]
