@@ -1,4 +1,4 @@
-name             "vagrant-ohai-plugin"
+name             "ohai-vagrant-eth0"
 maintainer       "Tim Brown"
 maintainer_email "tpbrown@gmail.com"
 license          "Apache 2.0"
@@ -6,7 +6,7 @@ description      "Ohai plugin that detects Vagrant"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.1"
 
-recipe "vagrant-ohai-plugin::default", "Installs the Vagrant ohai plugin"
+recipe "ohai-vagrant-eth0::default", "Installs the Vagrant ohai plugin"
 
 attribute "ohai/plugin_path",
   :display_name => "Ohai Plugin Path",
